@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>NIDHI’S CIE-2 TRACKER ❄️</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg1:#f1ecff;--bg2:#e3f3ff;--bg3:#e6faf1;--card:rgba(255,255,255,.82);--ink:#2b2350;--mute:#645e8c;--pur:#6d4fc2;--pink:#ffd6ea;--ice:#d9f0ff;--mint:#d4f5e6;--line:#ddd3f6;--on:#fff;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]){color-scheme:dark;--bg1:#241d45;--bg2:#1b2a45;--bg3:#1a3a38;--card:rgba(44,37,82,.85);--ink:#f1eeff;--mute:#b6aedc;--pur:#b7a2ff;--pink:#5a2d49;--ice:#25405c;--mint:#1f4a3d;--line:#43397a;--on:#241d45}}
+:root[data-theme=dark]{color-scheme:dark;--bg1:#241d45;--bg2:#1b2a45;--bg3:#1a3a38;--card:rgba(44,37,82,.85);--ink:#f1eeff;--mute:#b6aedc;--pur:#b7a2ff;--pink:#5a2d49;--ice:#25405c;--mint:#1f4a3d;--line:#43397a;--on:#241d45}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;font:16px/1.5 'Nunito Sans',system-ui,sans-serif;color:var(--ink);background:linear-gradient(160deg,var(--bg1),var(--bg2) 55%,var(--bg3)) fixed;min-height:100vh}
+#snow{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:0}
+main{position:relative;z-index:1;max-width:1050px;margin:0 auto;padding:18px 14px 60px}
+h1,h2,h3{font-family:Fraunces,Georgia,serif;margin:0}
+h1{font-size:clamp(1.8rem,5vw,2.8rem);color:var(--pur);text-align:center;margin-top:8px}
+.sub{text-align:center;color:var(--mute);margin:4px 0 18px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:16px;box-shadow:0 8px 30px rgba(109,79,194,.12);margin-bottom:14px;backdrop-filter:blur(6px)}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:12px}
+.stat{border-radius:18px;padding:12px;text-align:center}
+.stat:nth-child(1){background:var(--ice)}.stat:nth-child(2){background:var(--mint)}.stat:nth-child(3){background:var(--pink)}.stat:nth-child(4){background:var(--line)}
+.stat b{display:block;font:700 1.9rem Fraunces,Georgia,serif}.stat span{font-size:.9rem;color:var(--mute)}
+.bar{height:12px;border-radius:99px;background:var(--line);overflow:hidden}
+.bar i{display:block;height:100%;width:0;border-radius:99px;background:linear-gradient(90deg,#a98bff,#ff9fcf,#8fdcc0);transition:width .5s}
+.bar.big{height:24px}
+.sp{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:10px;margin-top:14px}
+.sp div{font-size:.9rem}.sp .bar{margin-top:3px}
+nav{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0}
+nav button,.btn{font:700 .95rem 'Nunito Sans',sans-serif;border:1px solid var(--line);background:var(--card);color:var(--ink);padding:10px 16px;border-radius:99px;cursor:pointer;min-height:44px}
+nav button[aria-selected=true]{background:var(--pur);color:var(--on);border-color:var(--pur)}
+nav .btn{margin-left:auto}
+.tab{display:none}.tab.on{display:block}
+details{border:1px solid var(--line);border-radius:16px;margin:8px 0;background:var(--card)}
+summary{cursor:pointer;padding:12px 14px;font-weight:700;display:flex;gap:8px;flex-wrap:wrap;justify-content:space-between;list-style:none}
+summary::-webkit-details-marker{display:none}
+summary::before{content:"▸";color:var(--pur);margin-right:6px;transition:transform .2s}
+details[open]>summary::before{transform:rotate(90deg)}
+summary>span:first-child{flex:1 1 260px}
+.pill{font-size:.85rem;color:var(--mute);font-weight:600}
+.in{padding:0 14px 14px}
+.topics{margin:0 0 10px;padding-left:18px;color:var(--mute);font-size:.92rem;columns:2 240px}
+.blk{border-radius:16px;padding:10px 12px;margin:10px 0;background:var(--ice)}
+.blk:nth-of-type(3n+2){background:var(--pink)}.blk:nth-of-type(3n){background:var(--mint)}
+.bh{font-weight:700;display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:6px}
+.qs{display:flex;flex-wrap:wrap;gap:6px}
+.q{display:inline-flex;align-items:center;gap:6px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:6px 10px;min-height:40px;cursor:pointer;font-size:.95rem}
+.q:has(input:checked){background:var(--pur);color:var(--on);border-color:var(--pur);text-decoration:line-through}
+input[type=checkbox]{width:18px;height:18px;accent-color:var(--pur);cursor:pointer}
+.all{display:inline-flex;gap:6px;align-items:center;font-weight:700;cursor:pointer}
+table{width:100%;border-collapse:collapse;font-size:.95rem}
+.tw{overflow-x:auto}th,td{padding:9px 8px;border-bottom:1px solid var(--line);text-align:right;white-space:nowrap}th:first-child,td:first-child{text-align:left}
+.note{background:var(--pink);border-radius:14px;padding:10px 14px;font-size:.92rem;margin-bottom:12px}
+.rev{border:2px dashed var(--pur);border-radius:16px;padding:10px 14px;margin:10px 0;background:var(--card)}
+.rev ul{margin:6px 0 0;padding-left:18px;columns:2 220px;font-size:.93rem}
+#modal{position:fixed;inset:0;background:rgba(20,10,50,.5);display:none;align-items:center;justify-content:center;z-index:9;padding:20px}
+#modal.on{display:flex}#modal .card{max-width:380px;text-align:center}
+:focus-visible{outline:3px solid var(--pur);outline-offset:2px}
+@media(max-width:640px){.stats{grid-template-columns:repeat(2,1fr)}nav .btn{margin-left:0}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style></head><body>
+<canvas id="snow" aria-hidden="true"></canvas>
+<main>
+<h1>NIDHI’S CIE-2 TRACKER ❄️</h1>
+<p class="sub">Prep: 20 Nov – 6 Dec 2026 · Exams start 7 Dec ✨ Modules III, IV &amp; V</p>
+<section class="card" aria-label="Dashboard">
+<div class="stats">
+<div class="stat"><b id="sT">0</b><span>Total questions</span></div>
+<div class="stat"><b data-k="all" data-f="d">0</b><span>Completed</span></div>
+<div class="stat"><b data-k="all" data-f="r">0</b><span>Remaining</span></div>
+<div class="stat"><b data-k="all" data-f="p">0%</b><span>Complete</span></div>
+</div>
+<div class="bar big"><i data-k="all" data-f="w"></i></div>
+<div class="sp" id="sp"></div>
+</section>
+<nav role="tablist">
+<button role="tab" aria-selected="true" data-t="tr">Question tracker</button>
+<button role="tab" aria-selected="false" data-t="tt">Daily timetable</button>
+<button role="tab" aria-selected="false" data-t="su">Subject summary</button>
+<button class="btn" id="rb">Reset progress</button>
+</nav>
+<section id="tr" class="tab on"></section>
+<section id="tt" class="tab"></section>
+<section id="su" class="tab"></section>
+</main>
+<div id="modal"><div class="card"><h3>Reset all progress?</h3><p>Every ticked question will be cleared. This cannot be undone.</p><button class="btn" id="no">Keep my progress</button> <button class="btn" id="yes" style="background:var(--pink)">Yes, clear everything</button></div></div>
+<script>
+const SUBJ=[
+["AHSE03","Engineering Chemistry",[
+["III","Polymers",["Classification of polymers and polymerization","Thermoplastics vs thermosetting plastics","Monomers and preparation of PVC","Nylon 6,6 and Buna-S","Elastomers and rubber properties","Applications: tyres and tubes","Properties, uses and limitations"],[10,20,20]],
+["IV","Energy Sources",["Conventional and non-conventional energy","Solid, liquid and gaseous fuels","Calorific value: GCV and NCV","Coal analysis and fuel calculations","Petroleum and gaseous fuels","Combustion and applications"],[10,20,20]],
+["V","Advanced Functional Materials",["Nanomaterials and properties","Sol-gel synthesis","Chemical reduction method","Functional materials and applications","Material properties and uses"],[10,20,20]]]],
+["AHSE01","Matrices and Calculus",[
+["III","Single Variable Calculus",["Rolle’s theorem","Lagrange’s mean value theorem","Cauchy’s mean value theorem","Taylor’s and Maclaurin’s series","Applications of MVTs","Curve tracing"],[10,20,20]],
+["IV","Multivariable Calculus",["Partial derivatives and chain rule","Jacobian and transformations","Functional dependence","Maxima and minima","Lagrange multipliers"],[10,20,20]],
+["V","Multiple Integrals",["Double integrals (Cartesian)","Change of order","Double integrals (polar)","Triple integrals","Area and volume"],[10,20,20]]]],
+["AEEE01","Basic Electrical & Electronics Engineering",[
+["III","Electrical Machines",["Single-phase transformer","EMF equation, turns ratio","Losses and efficiency","DC generators and motors","Three-phase induction motor"],[10,20,20]],
+["IV","Diodes and Rectifiers",["PN junction, diode equation","Forward/reverse characteristics","Zener diode","Half, full and bridge rectifiers","PIV, efficiency, ripple factor","Capacitor filters"],[10,20,20]],
+["V","BJT and FET",["BJT construction and operation","CB, CE, CC configurations","Current gains, characteristics","FET construction, characteristics","BJT vs FET, applications"],[10,20,20]]]],
+["ACSE02","Essentials of Problem Solving",[
+["III","Graph Coloring and Graph Algorithms",["Vertex coloring, k-coloring","Independent sets, chromatic number","Edge coloring and variations","Four-color theorem, first-fit","DFS and BFS","MST: Kruskal, Prim","Union-find"],[20,20,10]],
+["IV","Algebraic and Transcendental Equations",["Algebraic equations and roots","Bisection, Regula Falsi","Iteration method","Newton-Raphson","Ramanujan, Secant, Muller"],[20,20,10]],
+["V","Numerical Integration and ODEs",["Trapezoidal rule","Simpson’s 1/3 and 3/8","Taylor series method","Euler’s method","Runge-Kutta methods"],[20,20,10]]]],
+["ACSE01","Object Oriented Programming",[
+["III","Inheritance and Generalization",["Inheritance, base and derived classes","Types of inheritance","Generalization and specialization","Overriding and inherited members","Constructors and access control"],[14,20,22]],
+["IV","Polymorphism and Interfaces",["Static and dynamic polymorphism","Overloading and overriding","Early and late binding","Abstract classes","Interfaces, runtime polymorphism"],[14,22,21]],
+["V","File Structures, Exceptions, Concurrency",["File I/O and streams","Exception handling: try/catch/finally","throw and throws","Multithreading, thread lifecycle","Synchronization"],[10,20,20]]]]];
+const Q=[],G={all:[]},byId={};
+const add=(k,id)=>(G[k]=G[k]||[]).push(id);
+SUBJ.forEach(([c,n,mods])=>mods.forEach(([m,t,top,cnt])=>["A","B","C"].forEach((p,i)=>{
+ let labs=Array.from({length:cnt[i]},(_,j)=>String(j+1));
+ if(c=="ACSE01"&&m=="IV"&&p=="A")labs=[...labs.slice(0,13),"13b"]; // PDF numbers two questions as 13
+ labs.forEach(l=>{const q={id:`${c}-${m}-${p}-${l}`,c,n,m,t,p,l};Q.push(q);byId[q.id]=q;G.all.push(q.id);add("s:"+c,q.id);add(`m:${c}-${m}`,q.id);add(`p:${c}-${m}-${p}`,q.id)});
+})));
+const lab=l=>l=="13b"?"Q13 (2nd)":(l=="13"&&false?"":"Q"+l);
+const labShow=q=>q.id=="ACSE01-IV-A-13"?"Q13 (1st)":lab(q.l);
+// schedule: 17 days, 45 each for first 15, 44 for last two
+const N=Q.length,D=17,base=Math.floor(N/D),extra=N%D;let pos=0;const days=[];
+for(let d=0;d<D;d++){const n=base+(d<extra?1:0);days.push(Q.slice(pos,pos+n));pos+=n;days[d].forEach(q=>add("d:"+d,q.id))}
+const PN={A:"Part A",B:"Part B",C:"Part C"};
+const done=new Set();try{JSON.parse(localStorage.getItem("nidhi-cie2")||"[]").forEach(i=>byId[i]&&done.add(i))}catch(e){}
+const save=()=>{try{localStorage.setItem("nidhi-cie2",JSON.stringify([...done]))}catch(e){}};
+const cb=q=>`<label class="q"><input type="checkbox" data-id="${q.id}"> ${labShow(q)}</label>`;
+const bar=k=>`<div class="bar"><i data-k="${k}" data-f="w"></i></div>`;
+const x=k=>`<span class="pill" data-k="${k}" data-f="x"></span>`;
+// tracker
+let h=`<div class="note">Counts verified against your PDFs. <b>One discrepancy:</b> OOP Module IV Part A has 14 questions (the PDF numbers two of them “13”), so OOP is 163 and the grand total is ${N}, not 762. Both are shown as Q13 (1st) and Q13 (2nd).</div>`;
+SUBJ.forEach(([c,n,mods])=>{h+=`<div class="card"><h2>${n} <span class="pill">${c}</span></h2>${x("s:"+c)}${bar("s:"+c)}`;
+ mods.forEach(([m,t,top])=>{h+=`<details><summary><span>Module ${m}: ${t}</span>${x(`m:${c}-${m}`)}</summary><div class="in">${bar(`m:${c}-${m}`)}<ul class="topics">${top.map(i=>`<li>${i}</li>`).join("")}</ul>`;
+  ["A","B","C"].forEach(p=>{const k=`p:${c}-${m}-${p}`;h+=`<div class="blk"><div class="bh"><label class="all"><input type="checkbox" data-all="${k}"> ${PN[p]} · mark all</label>${x(k)}</div><div class="qs">${G[k].map(i=>cb(byId[i])).join("")}</div></div>`});
+  h+=`</div></details>`});
+ h+=`</div>`});
+tr.innerHTML=h;
+// timetable
+const fmt=d=>new Date(2026,10,20+d).toLocaleDateString("en-GB",{weekday:"short",day:"numeric",month:"long",year:"numeric"});
+const REV=["Unfinished questions","Difficult questions","Important formulas","Definitions","Key concepts","Numerical problems","Topics needing another revision"];
+h=`<div class="note">${N} questions across 17 days (${base+1} on the first ${extra} days, ${base} after), in strict order: subject → module → part → question number. Days 16 and 17 are revision days, but they still carry questions because you asked for all of them to be scheduled.</div>`;
+const today=Math.min(16,Math.max(0,Math.floor((new Date()-new Date(2026,10,20))/864e5)));
+days.forEach((qs,d)=>{const subs=[...new Set(qs.map(q=>q.c))].map(c=>SUBJ.find(s=>s[0]==c)[1]);
+ h+=`<details${d==today?" open":""}><summary><span>Day ${d+1} · ${fmt(d)}${d>14?" · Revision":""}<br><span class="pill">${subs.join(", ")}</span></span><span class="pill">Target ${qs.length} · <b data-k="d:${d}" data-f="x"></b></span></summary><div class="in">${bar("d:"+d)}`;
+ let cur="",g=[];const fl=()=>{if(g.length){const q=g[0];h+=`<div class="blk"><div class="bh">${q.n} | Module ${q.m}: ${q.t} | ${PN[q.p]} | ${g.length} Question${g.length>1?"s":""}</div><div class="qs">${g.map(cb).join("")}</div></div>`}g=[]};
+ qs.forEach(q=>{const k=q.c+q.m+q.p;if(k!=cur){fl();cur=k}g.push(q)});fl();
+ if(d>14)h+=`<div class="rev"><b>Revision reminders · <span data-k="all" data-f="r"></span> questions still unfinished overall</b><ul>${REV.map(r=>`<li>${r}</li>`).join("")}</ul><div class="pill" style="margin-top:6px">Remaining by subject: ${SUBJ.map(s=>`${s[1].split(" ")[0]} <b data-k="s:${s[0]}" data-f="r"></b>`).join(" · ")}</div></div>`;
+ h+=`</div></details>`});
+tt.innerHTML=h;
+// summary
+h=`<div class="card tw"><table><tr><th>Subject</th><th>Mod III</th><th>Mod IV</th><th>Mod V</th><th>Total</th><th>Done</th><th>Left</th><th>%</th></tr>`;
+SUBJ.forEach(([c,n])=>{h+=`<tr><td>${n}</td>${["III","IV","V"].map(m=>`<td>${G[`m:${c}-${m}`].length}</td>`).join("")}<td>${G["s:"+c].length}</td><td data-k="s:${c}" data-f="d"></td><td data-k="s:${c}" data-f="r"></td><td data-k="s:${c}" data-f="p"></td></tr>`});
+h+=`<tr><td><b>Total</b></td>${["III","IV","V"].map(m=>`<td><b>${SUBJ.reduce((a,s)=>a+G[`m:${s[0]}-${m}`].length,0)}</b></td>`).join("")}<td><b>${N}</b></td><td data-k="all" data-f="d"></td><td data-k="all" data-f="r"></td><td data-k="all" data-f="p"></td></tr></table></div>`;
+su.innerHTML=h;sT.textContent=N;
+sp.innerHTML=SUBJ.map(s=>`<div>${s[1]} ${x("s:"+s[0])}${bar("s:"+s[0])}</div>`).join("");
+// live updates
+const boxes=[...document.querySelectorAll("[data-id]")],alls=[...document.querySelectorAll("[data-all]")],outs=[...document.querySelectorAll("[data-k]")];
+function upd(){boxes.forEach(b=>b.checked=done.has(b.dataset.id));
+ alls.forEach(b=>b.checked=G[b.dataset.all].every(i=>done.has(i)));
+ const st={};for(const k in G){const t=G[k].length,d=G[k].filter(i=>done.has(i)).length;st[k]=[d,t,Math.round(d/t*100)]}
+ outs.forEach(o=>{const[d,t,p]=st[o.dataset.k],f=o.dataset.f;
+  if(f=="w")o.style.width=p+"%";else o.textContent=f=="d"?d:f=="r"?t-d:f=="p"?p+"%":`${d}/${t} · ${p}%`})}
+document.addEventListener("change",e=>{const t=e.target;
+ if(t.dataset.id){t.checked?done.add(t.dataset.id):done.delete(t.dataset.id)}
+ else if(t.dataset.all){G[t.dataset.all].forEach(i=>t.checked?done.add(i):done.delete(i))}else return;
+ save();upd()});
+document.querySelectorAll("nav [data-t]").forEach(b=>b.onclick=()=>{document.querySelectorAll("nav [data-t]").forEach(x=>x.setAttribute("aria-selected",x==b));document.querySelectorAll(".tab").forEach(s=>s.classList.toggle("on",s.id==b.dataset.t))});
+rb.onclick=()=>modal.classList.add("on");no.onclick=()=>modal.classList.remove("on");
+yes.onclick=()=>{done.clear();save();upd();modal.classList.remove("on")};
+upd();
+// snow
+(()=>{if(matchMedia("(prefers-reduced-motion:reduce)").matches)return;const c=snow,x=c.getContext("2d");let w,h;
+ const rs=()=>{w=c.width=innerWidth;h=c.height=innerHeight};rs();addEventListener("resize",rs);
+ const f=Array.from({length:42},()=>({x:Math.random()*w,y:Math.random()*h,r:1+Math.random()*2.6,v:.3+Math.random()*.8,p:Math.random()*6}));
+ (function a(t){x.clearRect(0,0,w,h);x.fillStyle="rgba(150,130,230,.55)";f.forEach(s=>{s.y+=s.v;s.x+=Math.sin(t/1500+s.p)*.4;if(s.y>h){s.y=-5;s.x=Math.random()*w}x.beginPath();x.arc(s.x,s.y,s.r,0,6.3);x.fill()});requestAnimationFrame(a)})(0)})();
+</script></body></html>
